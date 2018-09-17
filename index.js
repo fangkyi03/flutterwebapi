@@ -40,6 +40,12 @@ function createFile (path,content = '') {
     fs.writeFileSync(path,content )
 }
 
+
+/**
+ * 初始化文件夹 如果有文件就删除
+ *
+ * @param {*} callBack
+ */
 function initPath (callBack) {
     process.exec('rm -rf ' + basePath, () => {
         fs.mkdirSync(basePath)
@@ -47,6 +53,12 @@ function initPath (callBack) {
     })
 }
 
+
+/**
+ * 获取第二级数据
+ *
+ * @param {*} {item,parentPath,pathName}
+ */
 function getChildrenInfo ({item,parentPath,pathName}) {
     axios.get(item.url)
     .then((e)=>{
@@ -60,6 +72,12 @@ function getChildrenInfo ({item,parentPath,pathName}) {
     })
 }
 
+
+/**
+ *  获取第一级接口数据
+ *
+ * @param {*} url
+ */
 function getParentInfo (url) {
     axios.get(url)
     .then((e) => {
